@@ -1,6 +1,16 @@
-# Instagram clone in Django
+# INSTA CLONE  
 
-Basic Instagram clone website built in django web framework using Python. 
+Basic Instagram clone website built in django web framework using Python.
+ 
+
+## Screenshots
+
+
+## By Anita Kahenya
+###  16th October 2020
+
+#### Link to live page
+  []
 
 ## Getting Started
 
@@ -29,22 +39,19 @@ pytz==2020.1
 sqlparse==0.3.1
 ```
 
-## Screenshots
-
-![Screen](screenshots/screen1.png?raw=true)
-![Screen](screenshots/screen2.png?raw=true)
-![Screen](screenshots/screen3.png?raw=true)
-![Screen](screenshots/screen4.png?raw=true)
-![Screen](screenshots/screen5.png?raw=true)
-![Screen](screenshots/screen6.png?raw=true)
-![Screen](screenshots/screen7.png?raw=true)
-![Screen](screenshots/screen8.png?raw=true)
-
-
-
 
 ## Built With
 
 * [Bulma](https://bulma.io/) - Bulma is a free, open source CSS framework based on Flexbox
 * [Django](https://www.djangoproject.com/) - Web framework
-* [Python] () - 
+* [Python](https://www.python.org/) - Programming Language
+* [HTML](https://www.w3schools.com/html/html_intro.asp) - Markup language for creating Web pages
+
+## Contact info
+* For any information queries or comments you can email me at
+ [anitakahenya1@gmail](Anita Kahenya)
+
+### [License](LICENSE)
+MIT license
+Copyright (c) 2020 
+**Anita Kahenya**
