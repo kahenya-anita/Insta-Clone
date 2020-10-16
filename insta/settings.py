@@ -62,7 +62,7 @@ ROOT_URLCONF = 'insta.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'instagram_clone/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'insta/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notifications.views.CountNotifications',
+                'direct.views.checkDirects',
             ],
         },
     },
@@ -128,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'instagram_clone/static')
+    os.path.join(BASE_DIR, 'insta/static')
 ]
 
 MEDIA_URL = '/media/'
