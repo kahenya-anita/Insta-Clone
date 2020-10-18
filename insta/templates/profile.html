@@ -15,8 +15,14 @@
             <div class="profile-user-settings">
                 <h1 style="font-weight: bold;" class="title is-1">{% if profile.first_name %}{{ profile.first_name }} {{ profile.last_name }} {% endif %}</h1>
                 <h2 class="subtitle is-3">@{{ profile.user }}</h2>
-                {% if user.is_authenticated and user == profile.user %}
-                <button href="{% url 'edit-profile' %}" class="btn profile-edit-btn">Edit Profile</button>
+                {% if user.is_authenticated and user != profile.user %}
+                <div class="media-right">
+                    {% if follow_status == True %}
+                    <a href="{% url 'follow' profile.user 0 %}" class="btn btn-danger btn-rounded">Unfollow</a> {% else %}
+                    <a href="{% url 'follow' profile.user 1 %}" class="btn btn-default btn-rounded">Follow</a> {% endif %}
+                </div>
+                {% endif %} {% if user.is_authenticated and user == profile.user %}
+                <a href="{% url 'edit-profile' %}"><button type="button" class="btn btn-light">Edit profile</button></a>
                 <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button> {% if user.is_authenticated and user != profile.user %}{% endif %}{% endif %}
             </div>
             <div class="profile-stats">

@@ -14,6 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
@@ -25,64 +26,66 @@
             <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
 
                 <!--Header-->
-                <div class="text-center">
-                    <h3 class="white-text mb-5 mt-4 font-weight-bold"><strong>SIGN</strong> <a class="green-text font-weight-bold"><strong> UP</strong></a></h3>
-                </div>
+                <div id="wrapper">
+                    <div class="main-content">
+                        <div class="header">
+                            <img src="https://i.imgur.com/zqpwkLQ.png" />
+                        </div>
 
-                <!--Body-->
-                <div class="md-form">
-                    {% csrf_token %}
-                    <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="text" id="Form-email5" class="form-control white-text">
-                    <label for="Form-email5">Your email</label>{{ form.email }}
-                </div>
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="materialFormCardNameEx" class="form-control">
-                    <label for="materialFormCardNameEx" class="font-weight-light">Username</label>{{ form.username }}
-                </div>
+                        <!--Body-->
+                        <div class="md-form">
+                            {% csrf_token %}
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="text" id="Form-email5" class="form-control white-text">
+                            <label for="Form-email5">Your email</label>{{ form.email }}
+                        </div>
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="materialFormCardNameEx" class="form-control">
+                            <label for="materialFormCardNameEx" class="font-weight-light">Username</label>{{ form.username }}
+                        </div>
 
-                <div class="md-form pb-3">
-                    <i class="fa fa-lock prefix grey-text"></i>
-                    <input type="password" id="Form-pass5" class="form-control white-text">
-                    <label for="Form-pass5">Your password</label>{{ form.password }}
+                        <div class="md-form pb-3">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="Form-pass5" class="form-control white-text">
+                            <label for="Form-pass5">Your password</label>{{ form.password }}
 
-                    <i class="fa fa-exclamation-triangle prefix grey-text"></i>
-                    <input type="password" id="Form-pass5" class="form-control white-text">
-                    <label for="Form-pass5">Confirm  password</label>{{ form.confirm_password }}
-                    <div class="form-check my-4">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
-                        <label class="form-check-label white-text" for="defaultCheck17">Accept the<a href="#"
+                            <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+                            <input type="password" id="Form-pass5" class="form-control white-text">
+                            <label for="Form-pass5">Confirm  password</label>{{ form.confirm_password }}
+                            <div class="form-check my-4">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
+                                <label class="form-check-label white-text" for="defaultCheck17">Accept the<a href="#"
                         class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+                            </div>
+                        </div>
+
+                        <!--Grid row-->
+                        <div class="row d-flex align-items-center mb-4">
+
+                            <!--Grid column-->
+                            <div class="text-center mb-3 col-md-12">
+                                <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign in</button>
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold"> Log in</a></p>
+                        </div>
+                        <!--Grid column-->
+
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
-                    </div>
-                </div>
-
-                <!--Grid row-->
-                <div class="row d-flex align-items-center mb-4">
-
-                    <!--Grid column-->
-                    <div class="text-center mb-3 col-md-12">
-                        <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign in</button>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-
-                <!--Grid column-->
-                <div class="col-md-12">
-                    <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold"> Log in</a></p>
-                </div>
-                <!--Grid column-->
-
-            </div>
-        </div>
-        <!--/Form without header-->
+                <!--/Form without header-->
 
     </section>
     <!--Section: Live preview-->
@@ -97,3 +100,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+
+</html>

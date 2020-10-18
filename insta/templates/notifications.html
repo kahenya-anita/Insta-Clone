@@ -1,101 +1,85 @@
-{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %} {% for notification in notifications %} {% if notification.notification_type == 2 %}
+<div class="notification">
+    <a href="{% url 'delete-notification' notification.id %}" class="btn btn-danger btn-rounded">Remove</a>
+    <!-- Grid row -->
+    <div class="row">
 
-<div class="columns is-mobile is-centered">
-    <div class="column is-half">
+        <!-- Grid column -->
+        <!--FOR COMMENTS -->
+        <div class="col-lg-10 col-xl-8">
 
+            <div class="media d-block d-md-flex">
+                {% if notification.sender.profile.picture %}
+                <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto" src="{{ notification.sender.profile.picture.url }}" alt="Avatar"> {% else %}
+                <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto" src="https://mdbootstrap.com/img/Others/documentation/img (3)-mini.jpg" alt="placeholder">{% endif %}
+                <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <h5 class="mt-0 font-weight-bold blue-text">@{{ notification.sender.username }}</h5>
+                    <br> Commented:
+                    <p>{{ notification.text_preview }}</p>
+                    <strong><small>{{ notification.date|naturaltime }}</small></strong>
 
-        {% for notification in notifications %} {% if notification.notification_type == 2 %}
-        <div class="notification">
-            <a href="{% url 'delete-notification' notification.id %}" class="delete"></a>
-            <article class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        {% if notification.sender.profile.picture %}
-                        <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image"> {% else %}
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> {% endif %}
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <strong>{{ notification.sender.profile.first_name }} {{ notification.sender.profile.last_name }}</strong> <small>@{{ notification.sender.username }}</small>
-                        <br> Commented:
-                        <p>{{ notification.text_preview }}</p>
-                        <strong><small>{{ notification.date|naturaltime }}</small></strong>
+                    <div class="media d-block d-md-flex mt-3">
+                        <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                            <img src="{{ notification.post.picture.url }}">
+                        </div>
                     </div>
                 </div>
-
-                <div class="media-right">
-                    <figure class="image is-128x128">
-                        <img src="{{ notification.post.picture.url }}">
-                    </figure>
-                </div>
-            </article>
-
+            </div>
         </div>
+        <!--FOR FOLLOWERS-->
         {% endif %} {% if notification.notification_type == 3 %}
         <div class="notification">
-            <a href="{% url 'delete-notification' notification.id %}" class="delete"></a>
+            <a href="{% url 'delete-notification' notification.id %}" class="btn btn-danger btn-rounded">Remove</a>
 
-            <article class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        {% if notification.sender.profile.picture %}
-                        <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image"> {% else %}
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> {% endif %}
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <strong>{{ notification.sender.profile.first_name }} {{ notification.sender.profile.last_name }}</strong> <small>@{{ notification.sender.username }}</small>
-                        <br>
-                        <p><i class="material-icons">person_add</i> Followed you!</p>
-                        <strong><small>{{ notification.date|naturaltime }}</small></strong>
-                    </div>
+            <div class="media d-block d-md-flex">
+                {% if notification.sender.profile.picture %}
+                <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto" src="{{ notification.sender.profile.picture.url }}" alt="Avatar">{% else %}
+                <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto" src="https://mdbootstrap.com/img/Others/documentation/img (3)-mini.jpg" alt="placeholder">{% endif %}
+                <h5 class=" mt-0 font-weight-bold blue-text ">@{{ notification.sender.username }}
+                </h5>
+
+                <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <p><i class="fas fa-user-plus "></i> Followed you!</p>
+                    <strong><small>{{ notification.date|naturaltime }}</small></strong>
                 </div>
-
-            </article>
+                {% endif %}
+            </div>
 
         </div>
-        {% endif %}
+        <!-- Grid column -->
+    </div>
+</div>
+
+<!-- FOR LIKES -->
+{% if notification.notification_type == 1 %}
+<div class="notification ">
+    <a href="{% url ' delete-notification ' notification.id %} " class="btn btn-danger btn-rounded ">Remove</a>
+    <div class="media d-block d-md-flex mt-3 shadow-textarea ">
+        {% if notification.sender.profile.picture %}
+        <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto " src="{{ notification.sender.profile.picture.url }} " alt="Generic placeholder image ">{% else %}
+        <img class="d-flex rounded-circle avatar z-depth-1-half mb-3 mx-auto " src=" " alt="Placeholder ">{% endif %}
+        <h5 class="mt-0 font-weight-bold blue-text mb-3 ">@{{ notification.sender.username }}</h5>
 
 
-        <!-- FOR LIKE --->
-        {% if notification.notification_type == 1 %}
-        <div class="notification">
-            <a href="{% url 'delete-notification' notification.id %}" class="delete"></a>
-
-            <article class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        {% if notification.sender.profile.picture %}
-                        <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image"> {% else %}
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> {% endif %}
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <strong>{{ notification.sender.profile.first_name }} {{ notification.sender.profile.last_name }}</strong> <small>@{{ notification.sender.username }}</small>
-                        <br>
-                        <p><i class="material-icons">thumb_up</i> Liked your post</p>
-                        <strong><small>{{ notification.date|naturaltime }}</small></strong>
-                    </div>
-                </div>
-
-                <div class="media-right">
-                    <figure class="image is-128x128">
-                        <img src="{{ notification.post.picture.url }}">
-                    </figure>
-                </div>
-            </article>
-
+        <div class="media-body text-center text-md-left ml-md-3 ml-0">
+            <p><i class="far fa-thumbs-up "></i> Liked your post</p>
+            <strong><small>{{ notification.date|naturaltime }}</small></strong>
         </div>
-        {% endif %} {% endfor %}
-        <!-- FOR LIKES --->
 
+
+        <div class="media d-block d-md-flex mt-3">
+            <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                <img src="{{ notification.post.picture.url }}">
+            </div>
+        </div>
 
 
     </div>
 </div>
+</div>
+{% endif %} {% endfor %}
+<!-- Grid row -->
+
 
 
 {% endblock %}

@@ -42,7 +42,7 @@ sqlparse==0.3.1
 
 ## Built With
 
-* [Bulma](https://bulma.io/) - Bulma is a free, open source CSS framework based on Flexbox
+*[MDB](https://mdb.io/) - MDB is a free, open source CSS framework based on Flexbox
 * [Django](https://www.djangoproject.com/) - Web framework
 * [Python](https://www.python.org/) - Programming Language
 * [HTML](https://www.w3schools.com/html/html_intro.asp) - Markup language for creating Web pages
