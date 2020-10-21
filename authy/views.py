@@ -83,6 +83,18 @@ def UserProfileFavorites(request, username):
 
 	return HttpResponse(template.render(context, request))
 
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect(request,'/')
+    context = {
+		'form':form,
+	}
+    return render(request, 'login.html',context)
+
 
 def Signup(request):
 	if request.method == 'POST':
@@ -92,7 +104,7 @@ def Signup(request):
 			email = form.cleaned_data.get('email')
 			password = form.cleaned_data.get('password')
 			User.objects.create_user(username=username, email=email, password=password)
-			return redirect('/')
+			return redirect('login')
 	else:
 		form = SignupForm()
 	
@@ -101,7 +113,6 @@ def Signup(request):
 	}
 
 	return render(request, 'signup.html', context)
-
 
 @login_required
 def PasswordChange(request):

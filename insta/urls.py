@@ -23,12 +23,12 @@ from authy.views import UserProfile, UserProfileFavorites, follow
 urlpatterns = [
     path('admin/', admin.site.urls), 
         
-    path('post/', include('post.urls')),
+    path('', include('post.urls')),
     path('user/', include('authy.urls')),
     path('direct/', include('direct.urls')),
     path('notifications/', include('notifications.urls')),
-    path('<username>/', UserProfile, name='profile'),
-    path('<username>/saved', UserProfile, name='profilefavorites'),
-    path('<username>/follow/<option>', follow, name='follow'),
+    path('profile/<username>/', UserProfile, name='profile'),
+    path('profile/<username>/saved', UserProfile, name='profilefavorites'),
+    path('profile/<username>/follow/<option>', follow, name='follow'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

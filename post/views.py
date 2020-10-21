@@ -14,11 +14,16 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from authy.models import Profile
 
-
-
-# Create your views here.
 @login_required
 def index(request):
+	posts = Post.objects.all()
+	template = loader.get_template('index.html')
+	context = {'post_items': posts}
+
+	return HttpResponse(template.render(context, request))
+
+@login_required
+def timeline(request):
 	user = request.user
 	posts = Stream.objects.filter(user=user)
 
@@ -31,7 +36,7 @@ def index(request):
 		
 	post_items = Post.objects.filter(id__in=group_ids).all().order_by('-posted')		
 
-	template = loader.get_template('index.html')
+	template = loader.get_template('timeline.html')
 
 	context = {
 	'post_items': post_items,

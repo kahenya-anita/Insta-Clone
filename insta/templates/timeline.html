@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %} {% for post_item in post_items %}
+
+<div class="card">
+    <div class="card_header">
+        <div class="profile_image">
+            {% if post_item.user.profile.picture %}
+            <img src="{{ post_item.user.profile.picture.url }}" alt="Placeholder image"> {% endif %}
+        </div>
+        <div class="post_info">
+            <div class="post_name">
+                {% if post_item.user.profile.first_name %}
+                <a href="{% url 'profile' post_item.user %}">
+                    <p class="title is-4">{{ post_item.user.profile.first_name }} {{ post_item.user.profile.last_name }}</p>
+                </a>
+                {% endif %}
+                <p class="subtitle is-6">@{{ post_item.user.username }}</p>
+
+            </div>
+
+        </div>
+
+        <div class="post_options"> <button data-toggle="modal" data-target="#menu_modal"><a ><i class="fas fa-ellipsis-h"></i></a></button></div>
+    </div>
+
+    <div class="post_image">
+        <a href="{{ post_item.get_absolute_url }}"><img src="{{ post_item.picture.url }}" alt="Placeholder image"></a>
+    </div>
+    <div class="engagement">
+        <a href="#"><i class="fas fa-heart" style="color: red;">{{post.likes}}</i></a>
+        <a href="{% url 'postlike' post_item.id %}"><i class="far fa-comment"></i></a>
+        <a href=""><i class="far fa-share-square"></i></a>
+        <a href="#" class="fa-bookmarks"><i class="far fa-bookmark"></i></a>
+    </div>
+    <div class="likes">
+        <a href="#">{{ post_item.likes }} likes</a>
+    </div>
+    <div class="caption">
+        {{ post_item.caption }}
+        <p>{% for tag in post_item.tags.all %}<a href="{{ tag.get_absolute_url }}">#{{ tag }}</a>{% endfor %}</p>
+        <br>
+        <strong><small>{{ post_item.posted | naturaltime }}</small></strong>
+    </div>
+
+    <div class="time_posted">
+        {{post_item.created_date | timesince}} ago
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+</div>
+{% endblock %}
