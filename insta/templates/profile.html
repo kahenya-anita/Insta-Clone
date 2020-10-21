@@ -68,41 +68,37 @@
             </ul>
         </div>
 
+        <main>
 
-        <div class="container-fluid">
-            <div class="row">
-                {% for post in posts %}
-                <div class="col-sm-4 my-5">
-                    <div class="card" style="width: 25rem;">
-                        <img src="{{ post.picture.url }}" class="card-img-top" alt="...">
+            <div class="container">
 
+                <div class="gallery">
+                    {% for post in posts %}
+                    <div class="row">
+                        <div class="col-sm-4 my-2" style="width: 95rem;">
+                            <div class="gallery-item" tabindex="0">
+
+                                <img src="{{ post.picture.url }}" class="gallery-image" alt="">
+
+                                <div class="gallery-item-info">
+
+                                    <ul>
+                                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i>{{ post_item.likes }} 56</li>
+                                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="gallery-item-info">
+                    {% empty %}
+                    <br>
+                    <h3 class="title is-3 ">You do not have any post!</h3>
+                    {% endfor %}
 
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> {{ post_item.likes }}</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-
-                    </div>
                 </div>
-
-
-                {% empty %}
-                <br>
-                <h3 class="title is-3 ">You do not have any post!</h3>
-                {% endfor %}
-
-
-
-
-            </div>
+        </main>
         </div>
-
-
-
-    </div>
 </section>
-
-
 {% endblock %}

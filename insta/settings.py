@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'authy',
+    'bootstrap4',
     'post',
     'comment',
     'direct',

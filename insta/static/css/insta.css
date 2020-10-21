@@ -524,7 +524,7 @@ button :hover {
 /* Gallery Section */
 
 .gallery {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     margin: -1rem -1rem;
     padding-bottom: 3rem;

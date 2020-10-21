@@ -1,105 +1,93 @@
-{% load static %}
-
+{% load static %}{% load bootstrap4 %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <title>Signup</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+    <link rel='icon' href="{% static 'img/insta.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-    <!--Section: Live preview-->
-    <section class="form-dark">
+    <section class="section">
+        <div class="container">
 
-        <!--Form without header-->
-        <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table7.jpg'); width: 28rem;">
-            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+            <div class="columns is-mobile has-text-centered">
+                <div class="column is-half is-offset-one-quarter">
 
-                <!--Header-->
-                <div id="wrapper">
-                    <div class="main-content">
-                        <div class="header">
-                            <img src="https://i.imgur.com/zqpwkLQ.png" />
+                    <div class="card">
+                        <div class="card-content">
+
+                            <form method="post" action="" role="form">
+                                {% csrf_token %}
+                                <h3 class="title is-3">Create an account</h3>
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <label class="label is-medium">Username</label> {{ form.username }}
+                                        <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+                                    </p>
+                                </div>
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <label class="label is-medium">Email</label> {{ form.email }}
+                                        <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+                                    </p>
+                                </div>
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <label class="label is-medium">Password</label> {{ form.password }}
+                                        <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+                                    </p>
+                                </div>
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <label class="label is-medium">Confirm password</label> {{ form.confirm_password }}
+                                        <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+                                    </p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <p class="control">
+                                        <button type="submit" name="action" class="button is-success" style="color: cyan;">
+          Create
+        </button>
+                                    </p>
+                                </div>
+
+
                         </div>
-
-                        <!--Body-->
-                        <div class="md-form">
-                            {% csrf_token %}
-                            <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="text" id="Form-email5" class="form-control white-text">
-                            <label for="Form-email5">Your email</label>{{ form.email }}
-                        </div>
-                        <!-- Material input text -->
-                        <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="materialFormCardNameEx" class="form-control">
-                            <label for="materialFormCardNameEx" class="font-weight-light">Username</label>{{ form.username }}
-                        </div>
-
-                        <div class="md-form pb-3">
-                            <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="Form-pass5" class="form-control white-text">
-                            <label for="Form-pass5">Your password</label>{{ form.password }}
-
-                            <i class="fa fa-exclamation-triangle prefix grey-text"></i>
-                            <input type="password" id="Form-pass5" class="form-control white-text">
-                            <label for="Form-pass5">Confirm  password</label>{{ form.confirm_password }}
-                            <div class="form-check my-4">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
-                                <label class="form-check-label white-text" for="defaultCheck17">Accept the<a href="#"
-                        class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
-                            </div>
-                        </div>
-
-                        <!--Grid row-->
-                        <div class="row d-flex align-items-center mb-4">
-
-                            <!--Grid column-->
-                            <div class="text-center mb-3 col-md-12">
-                                <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign in</button>
-                            </div>
-                            <!--Grid column-->
-                        </div>
-                        <!--Grid row-->
-
-                        <!--Grid column-->
-                        <div class="col-md-12">
-                            <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold"> Log in</a></p>
-                        </div>
-                        <!--Grid column-->
-
                     </div>
+
+
                 </div>
-                <!--/Form without header-->
-
     </section>
-    <!--Section: Live preview-->
 
+    </form>
+    </div>
 
-
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </body>
 
 </html>

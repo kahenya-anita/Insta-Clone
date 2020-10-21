@@ -22,38 +22,45 @@
 
 <body>
     <header>
-        <div class="navigation">
-            <div class="instalogo">
-                <a href="{% url 'index' %}"><i class="fab fa-instagram"></i> </a>
-                <a class="vl"></a>
-                <a href="{% url 'index' %}">Insta</a>
+        <div class="navigation ">
+            <div class="instalogo ">
+                <a href="{% url 'index' %} "><i class="fab fa-instagram "></i> </a>
+                <a class="vl "></a>
+                <a href="{% url 'index' %} ">Insta</a>
             </div>
-            <div class="search_bar">
-                <input type="text" placeholder="Search">
-                <a href="search"><i class="fas fa-search"></i></a>
-            </div>
-            <div class="contact_icons">
-                <a href=""><i class="far fa-compass"></i></a>
-                <a href="{% url 'show-notifications' %}"> <i class="far fa-heart"></i> {% if count_notifications %}
-                    <span class="badge">{{ count_notifications }}</span> {% endif %}
+            <!-- <div class="search_bar ">
+                <input type="text " placeholder="Search ">
+                <a href="{% url 'usersearch' %} "><i class="fas fa-search "></i></a>
+            </div> -->
+            <br>
+            <div class="contact_icons ">
+                <a href="{% url 'profile' request.user %} "><i class="far fa-user "></i></a>
+                <a href="{% url 'newpost' %} "><i class="fas fa-location-arrow " style="background-color: transparent; "></i>
                 </a>
-                <a href="{% url 'profile' request.user %}"> <i class="far fa-user"></i> </a>
+                <a href="{% url 'show-notifications' %} "> <i class="far fa-heart "></i> {% if count_notifications %}
+                    <span class="badge badge-danger ml-2 ">{{ count_notifications }}</span> {% endif %}
+                </a>
+                <a href="{% url 'inbox' %} "><i class="far fa-envelope "></i>
+                     {% if directs_count %}
+                    <span class="badge badge-danger ml-2 ">{{ directs_count }}</span> {% endif %}
+                </a>
+                <a href="{% url 'logout'%} "><i class="fas fa-sign-out-alt "></i> </a>
             </div>
         </div>
     </header>
-    <div class="content-container">
+    <div class="content-container ">
         {% block content %} {%endblock%}
 
 
 
         <!-- JQuery -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
         <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js "></script>
         <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js "></script>
         <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js "></script>
 </body>
 
 </html>

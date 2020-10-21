@@ -21,7 +21,8 @@ from django.conf import settings
 from authy.views import UserProfile, UserProfileFavorites, follow
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), 
+        
     path('post/', include('post.urls')),
     path('user/', include('authy.urls')),
     path('direct/', include('direct.urls')),

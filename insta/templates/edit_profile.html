@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-3">
         <div class="card card-body" id="img">
-            <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Back to Profile</a>
+            <a href="{% url 'index' %}" class="btn btn-warning"> &#8592; Back to Profile</a>
             <hr>
             <h3 style="text-align: center">Edit Profile</h3>
             <hr> {% if request.user.profile.picture %}

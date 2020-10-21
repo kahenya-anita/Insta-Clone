@@ -1,54 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% load static %}
+<div class="columns is-mobile">
+    <div class="column is-offset-one-fifth">
 
-{% block content %}
-
- <div class="columns is-mobile">
-  <div class="column is-offset-one-fifth">
-
-
-<div class="field has-addons">
-<form>
-  <div class="control">
-    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
-  </div>
-  <div class="control">
-  	<button type="submit" class="button is-success">Search</button>
-  </div>
-  </form>
-</div>
+        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Users..." value="{{ request.GET.q }}" aria-label="Search">
+        </form>
 
 
-</div>
-</div>
 
-<div class="column is-one-quarter">
-
-{% for user in users %}
-<div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-          {% if user.profile.picture %}
-            <img src="{{ user.profile.picture.url }}" alt="Placeholder image">
-          {% else %}
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          {% endif %}
-      </figure>
     </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>{{ user.profile.first_name }} {{ user.profile.last_name }}</strong><small>@{{ user.username }}</small>
-        </p>
-        <a href="{% url 'newconversation' user.username %}" class="button is-info">Send a message!</a>
-      </div>
-    </div>
-  </article>
 </div>
-{% endfor %}
-	
+
+<div class=" column is-one-quarter ">
+
+    {% for user in users %}
+    <div class="box ">
+        <article class="media ">
+            <div class="media-left ">
+
+                {% if user.profile.picture %}
+                <img src="{{ user.profile.picture.url }} " class="img-fluid z-depth-1 rounded-circle " alt=" Placeholder image "> {% else %}
+                <img src="https://bulma.io/images/placeholders/96x96.png " alt="Placeholder image "> {% endif %}
+
+            </div>
+            <div class="media-content ">
+                <div class="content ">
+                    <p>
+                        <strong>{{ user.profile.first_name }} {{ user.profile.last_name }}</strong><small>@{{ user.username }}</small>
+                    </p>
+                    <a href="{% url 'newconversation' user.username %} " class="btn blue-gradient btn-rounded ">Send a message!</a>
+                </div>
+            </div>
+        </article>
+    </div>
+    {% endfor %}
+
 
 </div>
 

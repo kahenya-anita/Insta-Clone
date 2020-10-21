@@ -9,7 +9,7 @@ class Notification(TestCase):
         item.sender = "Crush"
         item.notification_type = "Comment."
         item.preview = "You look prettier than a picture."
-        item.date = "10/19/moday"
+        item.date = "10/19/monday"
         item.is_seen = "False"
         item.save()
 

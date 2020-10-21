@@ -1,62 +1,62 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% load static %}
 
-{% block content %}
+<!-- Purple Header -->
+<div class="edge-header blue-gradient"></div>
 
-<div class="columns is-mobile has-text-centered">
-  <div class="column is-half is-offset-one-quarter">
+<!-- Main Container -->
+<div class="container free-bird">
+    <div class="row">
+        <div class="col-md-8 col-lg-7 mx-auto float-none white z-depth-1 py-2 px-2">
 
-    <div class="card">
-    <div class="card-content">
+            <!--Naked Form-->
+            <div class="card-body">
+                <h2 class="h2-responsive"><strong>New Post</strong></h2>
+                <p class="pb-4">Upload Files and Images</p>
 
-    <form method="post" action="" enctype="multipart/form-data" role="form">
-    {% csrf_token %}
-    <h3 class="title is-1">New Post</h3>
+                <!--Body-->
+                <form method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h5 class="h5-responsive">Add a Caption</h5>
+                    <div class="md-form">
+                        <i class="fas fa-pencil-alt fa-2x"></i>
+                        <br>
+                        <input type="text" class="form-control">
+                        <label for="form2"></label>
+                    </div>
 
-            <div class="field">
-              <p class="control has-icons-left">
-              <label class="label is-medium">Chose your picture</label>
-                {{ form.picture }}
-                <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
-        </p>
-          </div>
+                    <h5 class="h5-responsive">Tags</h5>
+                    <div class="md-form">
+                        <input type="text" id="form11" class="form-control" disabled>
+                        <label for="form11" class="disabled">Tag(add tags, separeted by commas)</label>{{ form.tags }}
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-hashtag"></i>
+                         </span>
+                    </div>
+                    <form class="md-form">
+                        <div class="file-field">
+                            <a class="btn btn-default  mt-0 float-left">
+                                <i class="fas fa-paperclip" aria-hidden="true"></i>
+                                <input type="file">
+                            </a>
+                        </div>
+                    </form>
 
-            <div class="field">
-              <p class="control has-icons-left">
-              <label class="label is-medium">Caption</label>
-                {{ form.caption }}
-                <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
-        </p>
-          </div>
+                    <button type="submit" name="newpost" class="btn btn-default-color-dark file-path validate ">Post</button>
 
-            <div class="field">
-              <p class="control has-icons-left">
-              <label class="label is-medium">Tags (add tags, separeted by commas)</label>
-                {{ form.tags }}
-                <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
-        </p>
-          </div>
+                </form>
 
-      <div class="field">
-      <p class="control">
-        <button type="submit" name="action" class="button is-success">
-          Create
-        </button>
-      </p>
+                <div class="my-2 ">
+                    <p style="font-weight:300;font-size:0.75rem ">Anita is amazing!!</p>
+                </div>
+
+            </div>
+            <!--Naked Form-->
+
+        </div>
     </div>
-
-
-      </div>
 </div>
-
-
+<!-- /.Main Container -->
 
 
 

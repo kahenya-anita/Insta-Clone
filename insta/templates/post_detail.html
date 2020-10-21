@@ -9,6 +9,38 @@
     </div>
 </div>
 
+{% if favorited is True %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb pink lighten-2">
+        <li class="breadcrumb-item"><i class="fab fa-mdb mr-2 white-text" aria-hidden="true"></i>
+            <a class="white-text" href="{% url 'postfavorite' post.id %}">Remove Post</a>
+        </li>
+        <li class="breadcrumb-item"><i class="far fa-star mx-2 white-text" aria-hidden="true"></i><a class="white-text" href="{% url 'postfavorite' post.id %}">Save Post</a></li>
+        <li class="breadcrumb-item"><i class="far fa-heart mx-2 red-text" aria-hidden="true"></i>
+            <a class="white-text" href="{% url 'postfavorite' post.id %}">{{ post.likes }} Likes</a>
+        </li>
+    </ol>
+</nav>
+<div class="d-flex justify-content-end">
+    <div class="media-right">
+        <a href="{% url 'postfavorite' post.id %}"><i class="fas fa-trash-restore-alt"></i></a>
+        <p>Remove Post</p>
+    </div>
+    {% else %}
+
+    <div class="media-right">
+        <a href="{% url 'postfavorite' post.id %}"><i class="fas fa-cloud-download-alt"></i></a>
+        <p>Save Post</p>
+    </div>
+
+    {% endif %}
+    <div class="media-right">
+        <a href="{% url 'postlike' post.id %}"><i class="far fa-heart"></i></a>
+        <p>{{ post.likes }} Likes</p>
+    </div>
+</div>
+
+<!--USER PROFILE -->
 <div class="d-flex justify-content-between">
     <div class="row">
         <div class="col-lg-4 col-md-6 mb-3">
@@ -28,77 +60,60 @@
         </div>
     </div>
 </div>
-{% if favorited is True %}
-<div class="media-right">
-    <a href="{% url 'postfavorite' post.id %}"><i class="fas fa-trash-restore-alt"></i></a>
-    <p>Remove Post</p>
-</div>
-{% else %}
-
-<div class="media-right">
-    <a href="{% url 'postfavorite' post.id %}"><i class="fas fa-cloud-download-alt"></i></a>
-    <p>Save Post</p>
-</div>
-
-{% endif %}
-
-<div class="media-right">
-    <a href="{% url 'postlike' post.id %}"><i class="material-icons has-text-danger">favorite</i></a>
-    <p>{{ post.likes }} Likes</p>
-</div>
 
 
 
-{% for comment in comments %}
-<div class="d-flex justify-content-around">
-    {% if comment.user.profile.picture %}
-    <div class="col-xl-5 col-md-4 mb-3 text-center">
-        <img src="{{ comment.user.profile.picture.url }}" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">{% endif %}
-    </div>
+<div class="d-flex justify-content-between">
+    <div class="row">
+        {% for comment in comments %}
 
-
-    <div class="media-content">
-        <div class="content">
-            <p>
+        <div class="card-body ">
+            <!-- Text -->
+            <ul class="card-text list-group list-group-flush animate__animated animate__fadeInUp" style="width: 350px;color: rgb(29, 28, 28); font-size: 24px;">
                 {% if comment.user.profile.first_name %}
-                <strong>{{ comment.user.profile.first_name }} {{ comment.user.profile.last_name }}</strong><small> @{{ comment.user.username }}</small> {% else %}
-                <strong>Unknown</strong> {% endif %}
+                <li class="list-group-item"> <strong>{{ comment.user.profile.first_name }} {{ comment.user.profile.last_name }}</strong>
+                </li>
+                <li class="list-group-item"><small> @{{ comment.user.username }}</small> {% else %}</li>
+                <li class="list-group-item"><strong>Unknown</strong> {% endif %}</li>
                 <br> {{ comment.body }}
                 <br>
-                <strong><small>{{ comment.date|naturaltime }}</small></strong>
-            </p>
+                <li class="list-group-item"><strong><small>{{ comment.date|naturaltime }}</small></strong></li>
+            </ul>
         </div>
         {% endfor %}
-
-
-        <div class="d-flex justify-content-around">
-            <article class="media">
-                {% if request.user.profile.picture %}
-                <div class="view overlay">
-                    <img src="{{ request.user.profile.picture.url }}" class="img-fluid  z-depth-1" alt="Placeholder image">{% endif %}
-                    <a>
-                        <div class="mask waves-effect rgba-white-slight"></div>
-                    </a>
-                </div>
-
-                <div class="media-content">
-                    <form method="post" action="" role="form">
-                        {% csrf_token %}
-                        <div class="field">
-                            <p class="control">
-                                {{ form.body }}
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control">
-                                <button type="submit" name="action" class="btn blue-gradient btn-rounded">Post Comment</button>
-
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </article>
-        </div>
     </div>
+</div>
 
-    {% endblock %}
+
+
+<div class="d-flex justify-content-around">
+    <article class="media">
+        {% if request.user.profile.picture %}
+        <div class="view overlay">
+            <img src="{{ request.user.profile.picture.url }}" class="img-fluid  z-depth-1" alt="Placeholder image">{% endif %}
+            <a>
+                <div class="mask waves-effect rgba-white-slight"></div>
+            </a>
+        </div>
+
+        <div class="media-content">
+            <form method="post" action="" role="form">
+                {% csrf_token %}
+                <div class="field">
+                    <p class="control">
+                        {{ form.body }}
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button type="submit" name="action" class="btn blue-gradient btn-rounded">Post Comment</button>
+
+                    </p>
+                </div>
+            </form>
+        </div>
+    </article>
+</div>
+</div>
+
+{% endblock %}

@@ -108,7 +108,7 @@ def NewPost(request):
 		form = NewPostForm()
 
 	context = {
-		'form':form,
+		'form':NewPostForm,
 	}
 
 	return render(request, 'newpost.html', context)
