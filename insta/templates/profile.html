@@ -22,7 +22,7 @@
                     <a href="{% url 'follow' profile.user 1 %}" class="btn btn-default btn-rounded">Follow</a> {% endif %}
                 </div>
                 {% endif %} {% if user.is_authenticated and user == profile.user %}
-                <a href="{% url 'edit-profile' %}"><button type="button" class="btn btn-light">Edit profile</button></a>
+                <a href="{% url 'edit-profile' profile.user %}"><button type="button" class="btn btn-light">Edit profile</button></a>
                 <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button> {% if user.is_authenticated and user != profile.user %}{% endif %}{% endif %}
             </div>
             <div class="profile-stats">

@@ -51,7 +51,7 @@ def PostDetails(request, post_id):
 	profile = Profile.objects.get(user=user)
 	favorited = False
 
-	#comment
+	#comment 
 	comments = Comment.objects.filter(post=post).order_by('date')
 	
 	if request.user.is_authenticated:
