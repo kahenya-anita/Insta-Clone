@@ -1,4 +1,12 @@
-{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %} {% for post_item in post_items %}
+{% extends 'base.html' %}
+ {% load static %}
+  {% load humanize %} 
+
+  {% block content %}
+
+  {% if post_items %}
+
+   {% for post_item in post_items %}
 
 <div class="card">
     <div class="card_header">
@@ -47,7 +55,18 @@
 
 </div>
 {% endfor %}
+</div>
+</div>
+{% else%}
+<div class="container">
+    <h2 style="text-decoration: underline;" class="">Follow other users to view there posts here !</h2>
+     {% for user in users %}
+     
+     <h3><a href="{% url 'profile' user.username %}">@{{user.username}}</a></h3>
+     <hr>
+    {% endfor %}
 
 </div>
-</div>
+
+ {% endif %}
 {% endblock %}

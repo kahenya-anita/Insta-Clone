@@ -14,6 +14,7 @@ from django.core.paginator import Paginator
 
 @login_required
 def Inbox(request):
+	users = User.objects.all()
 	messages = Message.get_messages(user=request.user)
 	active_direct = None
 	directs = None
@@ -31,6 +32,7 @@ def Inbox(request):
 		'directs': directs,
 		'messages': messages,
 		'active_direct': active_direct,
+		'users':users,
 		}
 
 	template = loader.get_template('direct/direct.html')
@@ -73,6 +75,7 @@ def Directs(request, username):
 		'directs': directs,
 		'messages': messages,
 		'active_direct':active_direct,
+		'users':users,
 	}
 
 	template = loader.get_template('direct/direct.html')
@@ -94,6 +97,8 @@ def NewConversation(request, username):
 
 @login_required
 def SendDirect(request):
+	# to_user = User.objects.get(username=username)
+    
 	from_user = request.user
 	to_user_username = request.POST.get('to_user')
 	body = request.POST.get('body')
@@ -104,7 +109,6 @@ def SendDirect(request):
 		return redirect('inbox')
 	else:
 		HttpResponseBadRequest()
-
 def checkDirects(request):
 	directs_count = 0
 	if request.user.is_authenticated:

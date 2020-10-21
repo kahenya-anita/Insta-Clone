@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-
+from django.contrib.auth.models import User
 from post.models import Stream, Post, Tag, Likes
 from post.forms import NewPostForm
 
@@ -26,8 +26,7 @@ def index(request):
 def timeline(request):
 	user = request.user
 	posts = Stream.objects.filter(user=user)
-
-
+	users = User.objects.all()
 
 	group_ids = []
 
@@ -40,6 +39,7 @@ def timeline(request):
 
 	context = {
 	'post_items': post_items,
+	'users':users,
 
 	}
 
