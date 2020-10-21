@@ -23,14 +23,14 @@ Insta Clone  is a web application that resembles Instagram a user can;
 
 
 ## For any Changes or Impovements 
--Fork the repo
--Create a new branch in your terminal (git checkout -b improve-feature)
--Install the prerequisites
--Make appropriate changes in file(s)
--Run the server to see the changes
--Add the changes and commit them (git commit -am "Improve App")
--Push to the branch (git push origin improve-app)
--Create a Pull request
+- Fork the repo
+- Create a new branch in your terminal (git checkout -b improve-feature)
+- Install the prerequisites
+- Make appropriate changes in file(s)
+- Run the server to see the changes
+- Add the changes and commit them (git commit -am "Improve App")
+- Push to the branch (git push origin improve-app)
+- Create a Pull request
 
 
 ### Prerequisites
@@ -61,9 +61,10 @@ Bootstrap ==4.0.0
 
 ## Contact info
 * For any information queries or comments you can email me at
- [anitakahenya1@gmail](Anita Kahenya)
+ [anitakahenya1@gmail](AnitaKahenya)
 
 ### [License](LICENSE)
 MIT license
+
 Copyright (c) 2020 
 **Anita Kahenya**
