@@ -11,7 +11,7 @@ Basic Instagram clone website built in django web framework using Python.
 ###  16th October 2020
 
 #### Link to live page
-  []
+  [https://instacrazy.herokuapp.com/]
 
 ## Description
 Insta Clone  is a web application that resembles Instagram a user can;
