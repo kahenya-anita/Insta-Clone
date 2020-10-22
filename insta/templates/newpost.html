@@ -15,37 +15,45 @@
                 <p class="pb-4">Upload Files and Images</p>
 
                 <!--Body-->
-                <form method="post" action="" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <h5 class="h5-responsive">Add a Caption</h5>
-                    <div class="md-form">
-                        <i class="fas fa-pencil-alt fa-2x"></i>
-                        <br>
-                        <input type="text" class="form-control">
-                        <label for="form2"></label>
-                    </div>
-
-                    <h5 class="h5-responsive">Tags</h5>
-                    <div class="md-form">
-                        <input type="text" id="form11" class="form-control" disabled>
-                        <label for="form11" class="disabled">Tag(add tags, separeted by commas)</label>{{ form.tags }}
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-hashtag"></i>
-                         </span>
-                    </div>
-                    <form class="md-form">
-                        <div class="file-field">
-                            <a class="btn btn-default  mt-0 float-left">
-                                <i class="fas fa-paperclip" aria-hidden="true"></i>
-                                <input type="file">
-                            </a>
-                        </div>
-                    </form>
-
-                    <button type="submit" name="newpost" class="btn btn-default-color-dark file-path validate ">Post</button>
-
-                </form>
-
+                      <form method="post" action="" enctype="multipart/form-data" role="form">
+                      {% csrf_token %}
+                              <div class="field">
+                                <p class="control has-icons-left">
+                                <label class="label is-medium">Chose your picture</label>
+                                  {{ form.picture }}
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-images"></i>
+                            </span>
+                          </p>
+                            </div>
+                  
+                              <div class="field">
+                                <p class="control has-icons-left">
+                                <label class="label is-medium">Caption</label>
+                                  {{ form.caption }}
+                                  <span class="icon is-small is-left">
+                              <i class="fas fa-user-lock"></i>
+                            </span>
+                          </p>
+                            </div>
+                  
+                              <div class="field">
+                                <p class="control has-icons-left">
+                                <label class="label is-medium">Tags (add tags, separeted by commas)</label>
+                                  {{ form.tags }}
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-hashtag"></i>
+                            </span>
+                          </p>
+                            </div>
+                  
+                        <div class="field">
+                        <p class="control">
+                          <button type="submit button" name="action" class="button is-success btn btn-default-color-dark ">
+                            Post
+                          </button>
+                        </p>
+                      </div>
                 <div class="my-2 ">
                     <p style="font-weight:300;font-size:0.75rem ">Anita is amazing!!</p>
                 </div>
